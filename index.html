@@ -44,10 +44,12 @@ nav.gnav a:hover{color:var(--blue);}
 .hero:after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(90deg, rgba(6,16,26,.86) 0%, rgba(6,16,26,.55) 40%, rgba(6,16,26,0) 66%);}
 .hero-copy{
-  position:absolute;left:0;top:50%;transform:translateY(-50%);z-index:2;
-  padding:0 6vw;max-width:760px;color:#fff;
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
+  width:100%;max-width:1120px;padding:0 24px;color:#fff;
   font-family:"Noto Sans JP",sans-serif;
+  box-sizing:border-box;
 }
+.hero-copy > *{max-width:640px;}
 .hero-copy .l1{font-size:clamp(30px,5.4vw,58px);font-weight:900;line-height:1.12;letter-spacing:1px;
   text-shadow:0 3px 14px rgba(0,0,0,.6);}
 .hero-copy .l1 .sub{font-size:.5em;font-weight:900;vertical-align:.28em;margin-left:2px;}
@@ -66,7 +68,6 @@ nav.gnav a:hover{color:var(--blue);}
 @media(max-width:640px){
   .hero img.bg{height:420px;object-position:70% center;}
   .hero:after{background:linear-gradient(90deg, rgba(6,16,26,.9) 0%, rgba(6,16,26,.72) 55%, rgba(6,16,26,.2) 100%);}
-  .hero-copy{padding:0 24px;}
 }
 
 section{padding:66px 0;}
@@ -377,6 +378,23 @@ footer.site{background:var(--dark);color:#c9d2d8;position:relative;}
 .video-box .site-video{width:100%;aspect-ratio:16/9;border-radius:6px;background:#000;display:block;box-shadow:0 12px 30px rgba(20,50,80,.18);}
 .svc-card img.thumb{width:100%;height:120px;object-fit:cover;border-radius:6px;margin-bottom:16px;display:block;}
 img.work-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px;margin-bottom:14px;display:block;}
+
+/* 施工実績ギャラリー（大画像＋サムネイル、クリックで切替） */
+.gallery{display:grid;grid-template-columns:1fr 470px;gap:24px;align-items:start;max-width:1000px;margin:0 auto;}
+.g-main{position:relative;border-radius:6px;overflow:hidden;box-shadow:0 10px 26px rgba(20,50,80,.14);background:#0d1b26;}
+.g-main .g-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.g-main .g-cap{position:absolute;left:0;right:0;bottom:0;background:rgba(30,40,48,.72);color:#fff;text-align:center;padding:12px;font-weight:700;font-size:14px;}
+.g-thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;}
+.g-thumbs .gth{padding:0;border:2px solid transparent;border-radius:4px;overflow:hidden;cursor:pointer;background:none;line-height:0;transition:border-color .15s,transform .15s;}
+.g-thumbs .gth img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
+.g-thumbs .gth:hover{transform:translateY(-1px);}
+.g-thumbs .gth.is-active{border-color:var(--blue);}
+#gal-minpaku .g-thumbs{grid-template-columns:repeat(5,1fr);}
+@media(max-width:820px){
+  .gallery{grid-template-columns:1fr;}
+  .g-thumbs{grid-template-columns:repeat(6,1fr);}
+  #gal-minpaku .g-thumbs{grid-template-columns:repeat(5,1fr);}
+}
 </style>
 </head>
 <body>
@@ -477,9 +495,9 @@ img.work-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px;mar
   <div class="wrap">
     <div class="sec-head center"><h2>対応内容</h2><span class="en">SERVICES</span></div>
     <div class="cards3">
-      <div class="svc-card"><h3>新設工事</h3><img class="thumb" src="assets/23281619_s.jpg" alt="非常用照明の新設"><p>建物の用途や規模に応じて、必要な箇所への非常用照明の設置をご提案します。現行の基準に沿った配置や機器選定を行い、安全性を確保します。</p></div>
-      <div class="svc-card"><h3>交換工事</h3><img class="thumb" src="assets/23281619_s.jpg" alt="非常用照明の交換"><p>老朽化や不点灯などの不具合がある設備について、適切な機器への交換を行います。既存設備の状況を確認し、無理のない形で対応内容をご案内します。</p></div>
-      <div class="svc-card"><h3>現地確認・ご提案</h3><img class="thumb" src="assets/AdobeStock_457156842-768x512.jpeg" alt="現地確認・ご提案"><p>現場の状況を確認したうえで、必要な施工範囲や内容をご説明いたします。初めての方にも分かりやすくご案内いたしますので、お気軽にご相談ください。</p></div>
+      <div class="svc-card"><h3>新設工事</h3><img class="thumb" src="assets/card_shinsetsu.jpeg" alt="非常用照明の新設"><p>建物の用途や規模に応じて、必要な箇所への非常用照明の設置をご提案します。現行の基準に沿った配置や機器選定を行い、安全性を確保します。</p></div>
+      <div class="svc-card"><h3>交換工事</h3><img class="thumb" src="assets/card_koukan.jpg" alt="非常用照明の交換"><p>老朽化や不点灯などの不具合がある設備について、適切な機器への交換を行います。既存設備の状況を確認し、無理のない形で対応内容をご案内します。</p></div>
+      <div class="svc-card"><h3>現地確認・ご提案</h3><img class="thumb" src="assets/card_genchi.jpeg" alt="現地確認・ご提案"><p>現場の状況を確認したうえで、必要な施工範囲や内容をご説明いたします。初めての方にも分かりやすくご案内いたしますので、お気軽にご相談ください。</p></div>
     </div>
   </div>
 </section>
@@ -500,10 +518,12 @@ img.work-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px;mar
   <div class="wrap">
     <div class="sec-head center"><h2>実績紹介</h2></div>
     <p style="text-align:center;max-width:820px;margin:0 auto 30px;">東京都・横浜市・川崎市などで、複合施設・マンション・商業施設・中小ビル・個人医院・工場など多数の建物の非常用照明（非常灯）の新設工事や交換工事を実施しています。</p>
-    <div class="works-slider">
-      <img class="work-img" src="assets/AdobeStock_1928064202.jpeg" alt="非常用照明 施工実績">
-      <div class="work-cap">マンション非常灯交換工事1</div>
-      <div class="slider-arrows"><span class="arrow">&#8249;</span><span class="arrow">&#8250;</span></div>
+<div class="gallery" id="gal-works">
+      <div class="g-main">
+        <img class="g-img" src="assets/works/work_01.jpg" alt="マンション非常灯交換工事1">
+        <div class="g-cap">マンション非常灯交換工事1</div>
+      </div>
+      <div class="g-thumbs"><button class="gth is-active" data-src="assets/works/work_01.jpg" data-cap="マンション非常灯交換工事1" aria-label="マンション非常灯交換工事1"><img src="assets/works/work_01.jpg" alt="マンション非常灯交換工事1" loading="lazy"></button><button class="gth" data-src="assets/works/work_02.jpg" data-cap="マンション非常灯交換工事2" aria-label="マンション非常灯交換工事2"><img src="assets/works/work_02.jpg" alt="マンション非常灯交換工事2" loading="lazy"></button><button class="gth" data-src="assets/works/work_03.jpg" data-cap="マンション非常灯交換工事3" aria-label="マンション非常灯交換工事3"><img src="assets/works/work_03.jpg" alt="マンション非常灯交換工事3" loading="lazy"></button><button class="gth" data-src="assets/works/work_04.jpg" data-cap="マンション非常灯交換工事4" aria-label="マンション非常灯交換工事4"><img src="assets/works/work_04.jpg" alt="マンション非常灯交換工事4" loading="lazy"></button><button class="gth" data-src="assets/works/work_05.jpg" data-cap="マンション非常灯交換工事5" aria-label="マンション非常灯交換工事5"><img src="assets/works/work_05.jpg" alt="マンション非常灯交換工事5" loading="lazy"></button><button class="gth" data-src="assets/works/work_06.jpg" data-cap="マンション非常灯交換工事6" aria-label="マンション非常灯交換工事6"><img src="assets/works/work_06.jpg" alt="マンション非常灯交換工事6" loading="lazy"></button><button class="gth" data-src="assets/works/work_07.jpg" data-cap="マンション非常灯交換工事7" aria-label="マンション非常灯交換工事7"><img src="assets/works/work_07.jpg" alt="マンション非常灯交換工事7" loading="lazy"></button><button class="gth" data-src="assets/works/work_08.jpg" data-cap="マンション非常灯交換工事8" aria-label="マンション非常灯交換工事8"><img src="assets/works/work_08.jpg" alt="マンション非常灯交換工事8" loading="lazy"></button><button class="gth" data-src="assets/works/work_09.jpg" data-cap="マンション非常灯交換工事9" aria-label="マンション非常灯交換工事9"><img src="assets/works/work_09.jpg" alt="マンション非常灯交換工事9" loading="lazy"></button><button class="gth" data-src="assets/works/work_10.jpg" data-cap="学習塾非常灯交換工事1" aria-label="学習塾非常灯交換工事1"><img src="assets/works/work_10.jpg" alt="学習塾非常灯交換工事1" loading="lazy"></button><button class="gth" data-src="assets/works/work_11.jpg" data-cap="学習塾非常灯交換工事2" aria-label="学習塾非常灯交換工事2"><img src="assets/works/work_11.jpg" alt="学習塾非常灯交換工事2" loading="lazy"></button><button class="gth" data-src="assets/works/work_12.jpg" data-cap="学習塾非常灯交換工事3" aria-label="学習塾非常灯交換工事3"><img src="assets/works/work_12.jpg" alt="学習塾非常灯交換工事3" loading="lazy"></button><button class="gth" data-src="assets/works/work_13.jpg" data-cap="学習塾非常灯交換工事4" aria-label="学習塾非常灯交換工事4"><img src="assets/works/work_13.jpg" alt="学習塾非常灯交換工事4" loading="lazy"></button><button class="gth" data-src="assets/works/work_14.jpg" data-cap="学習塾非常灯交換工事5" aria-label="学習塾非常灯交換工事5"><img src="assets/works/work_14.jpg" alt="学習塾非常灯交換工事5" loading="lazy"></button><button class="gth" data-src="assets/works/work_15.jpg" data-cap="学習塾非常灯交換工事6" aria-label="学習塾非常灯交換工事6"><img src="assets/works/work_15.jpg" alt="学習塾非常灯交換工事6" loading="lazy"></button><button class="gth" data-src="assets/works/work_16.jpg" data-cap="民泊 非常灯新設工事1" aria-label="民泊 非常灯新設工事1"><img src="assets/works/work_16.jpg" alt="民泊 非常灯新設工事1" loading="lazy"></button><button class="gth" data-src="assets/works/work_17.jpg" data-cap="民泊 非常灯新設工事2" aria-label="民泊 非常灯新設工事2"><img src="assets/works/work_17.jpg" alt="民泊 非常灯新設工事2" loading="lazy"></button><button class="gth" data-src="assets/works/work_18.jpg" data-cap="オフィス非常灯交換工事" aria-label="オフィス非常灯交換工事"><img src="assets/works/work_18.jpg" alt="オフィス非常灯交換工事" loading="lazy"></button></div>
     </div>
   </div>
 </section>
@@ -516,10 +536,12 @@ img.work-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px;mar
       <p>用途変更や新規開業に伴う対応など、現地の状況に応じて適切な施工をご提案いたします。</p>
       <p>また、避難口パネルについてはサービスにて設置対応を行っております。</p>
     </div>
-    <div class="works-slider">
-      <img class="work-img" src="assets/23281619_s.jpg" alt="民泊施設の非常用照明">
-      <div class="work-cap">民泊非常灯</div>
-      <div class="slider-arrows"><span class="arrow">&#8249;</span><span class="arrow">&#8250;</span></div>
+<div class="gallery" id="gal-minpaku">
+      <div class="g-main">
+        <img class="g-img" src="assets/minpaku/mpk_01.jpg" alt="民泊非常灯 施工事例1">
+        <div class="g-cap">民泊非常灯 施工事例1</div>
+      </div>
+      <div class="g-thumbs"><button class="gth is-active" data-src="assets/minpaku/mpk_01.jpg" data-cap="民泊非常灯 施工事例1" aria-label="民泊非常灯 施工事例1"><img src="assets/minpaku/mpk_01.jpg" alt="民泊非常灯 施工事例1" loading="lazy"></button><button class="gth" data-src="assets/minpaku/mpk_02.jpg" data-cap="民泊非常灯 施工事例2" aria-label="民泊非常灯 施工事例2"><img src="assets/minpaku/mpk_02.jpg" alt="民泊非常灯 施工事例2" loading="lazy"></button><button class="gth" data-src="assets/minpaku/mpk_03.jpg" data-cap="民泊非常灯 施工事例3" aria-label="民泊非常灯 施工事例3"><img src="assets/minpaku/mpk_03.jpg" alt="民泊非常灯 施工事例3" loading="lazy"></button><button class="gth" data-src="assets/minpaku/mpk_04.jpg" data-cap="民泊非常灯 施工事例4" aria-label="民泊非常灯 施工事例4"><img src="assets/minpaku/mpk_04.jpg" alt="民泊非常灯 施工事例4" loading="lazy"></button><button class="gth" data-src="assets/minpaku/mpk_05.jpg" data-cap="民泊非常灯 施工事例5" aria-label="民泊非常灯 施工事例5"><img src="assets/minpaku/mpk_05.jpg" alt="民泊非常灯 施工事例5" loading="lazy"></button><button class="gth" data-src="assets/minpaku/mpk_06.jpg" data-cap="民泊非常灯設置工事 専用回路" aria-label="民泊非常灯設置工事 専用回路"><img src="assets/minpaku/mpk_06.jpg" alt="民泊非常灯設置工事 専用回路" loading="lazy"></button><button class="gth" data-src="assets/minpaku/mpk_07.jpg" data-cap="民泊非常灯設置工事2" aria-label="民泊非常灯設置工事2"><img src="assets/minpaku/mpk_07.jpg" alt="民泊非常灯設置工事2" loading="lazy"></button></div>
     </div>
   </div>
 </section>
@@ -601,6 +623,21 @@ img.work-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px;mar
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } });
   },{threshold:.2});
   imgs.forEach(function(t){ io.observe(t); });
+})();
+</script>
+
+<script>
+(function(){
+  document.querySelectorAll('.gallery').forEach(function(g){
+    var img=g.querySelector('.g-img'), cap=g.querySelector('.g-cap');
+    g.querySelectorAll('.gth').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        img.src=btn.getAttribute('data-src'); cap.textContent=btn.getAttribute('data-cap');
+        g.querySelectorAll('.gth').forEach(function(b){b.classList.remove('is-active');});
+        btn.classList.add('is-active');
+      });
+    });
+  });
 })();
 </script>
 </body>
