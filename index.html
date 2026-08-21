@@ -469,18 +469,14 @@ img.work-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px;mar
 /* お悩みカード */
 /* セクション背景に非常灯画像を2倍相当で敷き、薄く色付け。上下境界はグラデーションで透明化 */
 .worry-sec{position:relative;overflow:hidden;}
-.worry-sec:before{content:"";position:absolute;inset:0;z-index:0;
-  background:url("assets/law_bg.jpg") center/200% no-repeat;
-  -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%);
-  mask-image:linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%);
-  opacity:.20;}
-.worry-sec:after{content:"";position:absolute;inset:0;z-index:0;
-  background:linear-gradient(to bottom, rgba(255,251,244,0) 0%, rgba(255,248,236,.72) 16%, rgba(255,248,236,.72) 84%, rgba(255,251,244,0) 100%);}
+
+.worry-sec:after{content:"";position:absolute;inset:0;z-index:0;background:#fbf5ec;}
 .worry-sec .wrap{position:relative;z-index:1;}
 .worry-lead{max-width:760px;margin:0 auto 30px;text-align:center;color:#4a565e;}
-.worry-two{display:grid;grid-template-columns:320px 1fr;gap:36px;align-items:center;max-width:1120px;margin:0 auto;}
-.worry-fig{display:flex;justify-content:center;}
-.worry-fig img{width:100%;max-width:320px;filter:drop-shadow(0 10px 22px rgba(20,50,80,.18));}
+.worry-two{display:grid;grid-template-columns:520px 1fr;gap:30px;align-items:center;max-width:1240px;margin:0 auto;}
+.worry-fig{display:flex;justify-content:center;overflow:visible;}
+/* 男性画像を1.5倍（780px）に拡大。左カラム幅は変えず、両サイドは見切れてOK */
+.worry-fig img{width:780px;max-width:none;flex:0 0 auto;filter:drop-shadow(0 12px 26px rgba(20,50,80,.2));}
 /* カードを2×2グリッド */
 .worry-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .worry-card{display:flex;gap:16px;align-items:flex-start;border:1px solid #f0e2cf;background:#fffdf8;border-radius:10px;padding:20px 22px;
@@ -508,7 +504,7 @@ img.work-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px;mar
 }
 @media(max-width:820px){
   .worry-two{grid-template-columns:1fr;gap:22px;}
-  .worry-fig img{max-width:240px;}
+  .worry-fig img{width:300px;max-width:100%;}
 }
 @media(prefers-reduced-motion:reduce){ .worry-card{opacity:1;transform:none;} }
 /* 費用の目安 */
@@ -558,6 +554,12 @@ img.work-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px;mar
   .btype-grid{grid-template-columns:1fr;}
   .art-grid{grid-template-columns:1fr;gap:0;}
   .price-box,.law-box{padding:22px 18px;}
+}
+
+/* 人物画像の下部（お腹〜下端）を透明フェード（CTA女性は対象外） */
+.fade-img, .worry-fig img{
+  -webkit-mask-image:linear-gradient(to bottom, #000 0%, #000 62%, transparent 96%);
+  mask-image:linear-gradient(to bottom, #000 0%, #000 62%, transparent 96%);
 }
 </style>
 </head>
@@ -816,15 +818,8 @@ img.work-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px;mar
     <p class="art-lead">じっくり知りたい方向けに、関連記事へのリンクをまとめました。</p>
     <div class="art-grid">
       <a href="#">非常灯が点かない・切れたときの原因と対処法</a>
-      <a href="#">非常灯の費用相場は？1灯あたりの価格<span class="soon">（近日公開）</span></a>
       <a href="#">川崎市でマンション非常灯交換工事｜料金の目安</a>
-      <a href="#">非常灯のLED化のメリットと交換工事<span class="soon">（近日公開）</span></a>
       <a href="#">東京都のマンション非常灯交換工事｜完全ガイド</a>
-      <a href="#">誘導灯と非常灯の違い<span class="soon">（近日公開）</span></a>
-      <a href="#">横浜市のマンション非常灯交換工事<span class="soon">（近日公開）</span></a>
-      <a href="#">民泊・飲食店・物販店舗の非常灯工事<span class="soon">（近日公開）</span></a>
-      <a href="#">非常灯のバッテリー交換｜寿命・時期・費用<span class="soon">（近日公開）</span></a>
-      <a href="#">点検で不点灯が見つかったら？是正までの流れ<span class="soon">（近日公開）</span></a>
     </div>
   </div>
 </section>
